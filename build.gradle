@@ -23,15 +23,15 @@ android {
     }
     signingConfigs {
         release {
-            keyAlias 'diligencia'
-            keyPassword 'diligencia'
-            storeFile file('C:/Py/controladuanero3-ingreso-reconfisico-movil-android/.buildconf/diligencia.jks')
-            storePassword 'diligencia'
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
         }
 
     }
     buildTypes {
-        produccion {
+        release {
             buildConfigField "String", SUNAT_URL, CONFIG("production.sunat.gateway.url")
             buildConfigField "String", CLIENT_ID, CONFIG("production.client.id")
             buildConfigField "String", CLIENT_SECRET, CONFIG("production.client.secret")
@@ -136,6 +136,3 @@ dependencies {
 
 }
 
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
